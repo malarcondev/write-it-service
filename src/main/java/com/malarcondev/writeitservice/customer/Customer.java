@@ -30,4 +30,8 @@ public class Customer {
 
     @OneToMany(mappedBy ="customer")
     private Set<Notes> notes;
+
+    public Customer(ApplicationUser applicationUser) {
+        this.user = applicationUser;
+    }
 }

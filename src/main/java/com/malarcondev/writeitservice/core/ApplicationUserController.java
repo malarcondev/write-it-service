@@ -17,12 +17,11 @@ import static org.springframework.http.HttpStatus.CREATED;
 @AllArgsConstructor
 @RequestMapping("/api/v1/auth/register")
 public class ApplicationUserController extends GenericController {
-    private final IApplicationUserService IApplicationUserService;
+    private final IApplicationUserService iApplicationUserService;
 
     @PostMapping
-    public ResponseEntity<APICustomResponse> createUser(
-            @Valid @RequestBody CreateUserRequest createUserRequest) {
-        UUID userId = IApplicationUserService.createUser(createUserRequest);
+    public ResponseEntity<APICustomResponse> createUser(@Valid @RequestBody CreateUserRequest createUserRequest) {
+        UUID userId = iApplicationUserService.createUser(createUserRequest);
         return createResponse(
                 Map.of("User_Id", userId),
                 "Application user has been created successfully",
